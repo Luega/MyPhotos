@@ -13,7 +13,7 @@ class PhotosTableSeeder extends Seeder
             for($i = 1; $i <= 27; $i++) {
             $photo = new Photo();
             $photo->title = 'Photo : ' . $i;
-            $photo->url = '/img/' . $i . '.png';
+            $photo->url = '/img/' . $i . '.jpg';
 
             $photo->save();
         }
