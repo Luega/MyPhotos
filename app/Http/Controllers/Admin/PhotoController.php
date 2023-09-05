@@ -54,7 +54,7 @@ class PhotoController extends Controller
 
         $photo->save();
 
-        return redirect()->route('photo.index')->with('success', 'Photo added successfully');
+        return redirect()->route('photos.index')->with('success', 'Photo added successfully');
     }
 
     /**
@@ -107,7 +107,7 @@ class PhotoController extends Controller
 
         $photo->save();
 
-        return redirect()->route('photo.index')->with('success', 'Photo added successfully');
+        return redirect()->route('photos.index')->with('success', 'Photo added successfully');
     }
 
     /**
@@ -120,6 +120,6 @@ class PhotoController extends Controller
     {
         $photo->delete();
 
-        return redirect()->route('photo.index')->with('success', 'Photo removed successfully');
+        return redirect()->route('photos.index')->with('success', 'Photo removed successfully');
     }
 }
