@@ -53,7 +53,12 @@ class PhotoController extends Controller
      */
     public function show(Photo $photo)
     {
-        //
+
+        $data = [
+            "photo" => $photo
+        ];
+
+        return view('photos.show', $data);
     }
 
     /**
@@ -64,7 +69,7 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        //
+        
     }
 
     /**
