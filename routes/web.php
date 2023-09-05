@@ -17,16 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('home');
+    return view('index');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Il prefisso delle rotte é admin
-// Il namespace é admin 
-// Il middleware vede se sei autenticato o no
 Route::prefix('admin')->middleware('auth')->group(function () {
-
     Route::resource('photos', PhotoController::class);
-   
 });
