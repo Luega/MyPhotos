@@ -1,4 +1,4 @@
-@extends('layouts.layout-bootstrap')
+@extends('layouts.app')
 
 @section('content')
     <form method="POST" action="{{route('photos.store')}}">
