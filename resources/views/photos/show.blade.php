@@ -2,20 +2,15 @@
 
 @section('content')
 
-    <div class="form-group">
+    <div class="form-group mb-4">
       <label for="title">Title</label>
       <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $photo->title }}" readonly>
-    </div>
+    </div> 
 
-    <div class="form-group">
-      <label for="title">Url</label>
-      <input type="text" class="form-control" name="url" placeholder="Url" value="{{ $photo->url }}" readonly>
-    </div>  
-
-    <div class="form-group">
-      <label for="title">Preview</label>
+    <div class="form-group text-center">
+      <label for="title">Photo</label>
       <br>
-      <img class="photo-preview" src="{{$photo->url}}" alt="" srcset="" style="width:100px;height:100px;object-fit:cover;">
+      <img class="photo-preview" src="{{asset('/img/'.$photo->img)}}" alt="" srcset="" style="width:600px;height:600px;object-fit:contain;">
     </div>      
 
 @endsection

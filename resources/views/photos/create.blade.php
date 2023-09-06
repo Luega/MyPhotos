@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="POST" action="{{route('photos.store')}}">
+    <form method="POST" action="{{route('photos.store')}}" enctype="multipart/form-data">
 
         @csrf 
         @method('POST')
@@ -21,41 +21,13 @@
             <input type="text" class="form-control" name="title" placeholder="Title" value="{{ old('title') }}">
         </div>
 
-        <div class="form-group">
-            <label for="url">Url</label>
+        <div class="form-group mt-2">
+            <label for="img">Photo</label>
             <div style="display: flex">
-            <input id="url" type="text" class="form-control" name="url" placeholder="Url" value="{{ old('url') }}" readonly>
-            &nbsp;&nbsp;
-            <button type="button" id="btn-change-url" class="btn btn-info">CHANGE&nbsp;URL</button>
-            </div>
-        </div> 
+            <input id="img" type="file" class="form-control" name="img" value="{{ old('img') }}">
+        </div>    
     
-        <div class="form-group">
-            <label for="title">Preview</label>
-            <br>
-            <img id="photo-preview" class="photo-preview" style="display:none" src="{{ old('url') }}" alt="" srcset="" style="width:100px;height:100px;object-fit:cover;">
-        </div>     
-    
-        <button type="submit" class="btn btn-success">SUBMIT</button>
+        <button type="submit" class="btn btn-success mt-4">SUBMIT</button>
 
-    </form>
-
-    <script>
-
-        document.getElementById('btn-change-url').addEventListener('click', function() {
-
-            const photoUrl = prompt('Photo url');
-
-            if (photoUrl != null && photoUrl.trim() != '') {
-
-                document.getElementById('url').value = photoUrl;
-                document.getElementById('photo-preview').src = photoUrl;
-                document.getElementById('photo-preview').style.display = 'block';
-                document.getElementById('photo-preview').style.width = '100px';
-                document.getElementById('photo-preview').style.height = '100px';
-            }
-
-        });
-
-    </script>  
+    </form> 
 @endsection

@@ -73,7 +73,7 @@ main {
   transition-duration: 0.5s;
 }
 .container_img:hover {
-  scale: 2;
+  scale: 1.1;
   transition-duration: 1s;
 }
 

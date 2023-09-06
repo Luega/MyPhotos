@@ -44,13 +44,19 @@ class PhotoController extends Controller
     {
         $request->validate([
             'title'=>'required|max:100',
-            'url'=>'required|max:100',
+            'img'=>'required',
         ]);
 
         $photo = new Photo();
 
         $photo->title = $request->input('title');
-        $photo->url = $request->input('url');
+        
+        $file = $request->file('img');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+        $file->move('img/', $filename);
+
+        $photo->img = $filename;
 
         $photo->save();
 
@@ -99,11 +105,17 @@ class PhotoController extends Controller
     {
         $request->validate([
             'title'=>'required|max:100',
-            'url'=>'required|max:100',
+            'img'=>'required',
         ]);
 
         $photo->title = $request->input('title');
-        $photo->url = $request->input('url');
+        
+        $file = $request->file('img');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+        $file->move('img/', $filename);
+
+        $photo->img = $filename;
 
         $photo->save();
 
@@ -118,6 +130,7 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
+
         $photo->delete();
 
         return redirect()->route('photos.index')->with('success', 'Photo removed successfully');
