@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PhotoController extends Controller
 {
@@ -119,6 +120,8 @@ class PhotoController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
             $file->storeAs('public/imgs', $filename);
+            
+            Storage::disk('public')->delete('imgs/' . $photo->img);
 
             $photo->img = $filename;
         }
@@ -139,13 +142,12 @@ class PhotoController extends Controller
     public function destroy(Photo $photo)
     {
 
+        Storage::disk('public')->delete('imgs/' . $photo->img);
+
         $photo->delete();
+
+
 
         return redirect()->route('photos.index')->with('success', 'Photo removed successfully');
     }
-
-    // private function deleteImgFromFolder(string $path) {
-    //     $file = public_path('img/' . $path);
-    //     $file->delete();
-    // }
 }
