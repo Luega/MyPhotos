@@ -33,7 +33,7 @@
                     <tr class="text-center align-middle">
                         <td>{{$photo->id}}</td>
                         <td>{{$photo->title}}</td>
-                        <td><img class="photo-preview" src="{{asset('img/'.$photo->img)}}" alt="" srcset="" style="width:100px;height:100px;object-fit:contain;"></td>
+                        <td><img class="photo-preview" src="{{Storage::url('imgs/'.$photo->img)}}" alt="" srcset="" style="width:100px;height:100px;object-fit:contain;"></td>
                         <td>
                             <a class="btn btn-info" href="{{ route('photos.show', ['photo' => $photo->id]) }}">DETAILS</a>
                         </td>   

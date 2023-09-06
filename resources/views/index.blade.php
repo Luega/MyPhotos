@@ -23,8 +23,10 @@
 						$('.container_imgs').html("");
 						
 						for(var i = data.length - 1; i >= 0; i--) {
-							const imgSrc = 'img/' + data[i].img;
-                    		const imgElement = '<div class="container_img pointer"><img src="' + imgSrc + '" alt="" srcset=""></div>';
+							const imgSrc = "imgs/" + data[i].img;
+							const imgUrl = '{{ Storage::url("") }}' + imgSrc;
+							console.log(imgUrl);
+            				const imgElement = '<div class="container_img pointer"><img src="' + imgUrl + '" alt="" srcset=""></div>';
                     		$('.container_imgs').append(imgElement);
 						}                            
 

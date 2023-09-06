@@ -10,7 +10,7 @@
     <div class="form-group text-center">
       <label for="title">Photo</label>
       <br>
-      <img class="photo-preview" src="{{asset('/img/'.$photo->img)}}" alt="" srcset="" style="width:600px;height:600px;object-fit:contain;">
+      <img class="photo-preview" src="{{Storage::url('imgs/'.$photo->img)}}" alt="" srcset="" style="width:600px;height:600px;object-fit:contain;">
     </div>      
 
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -44,7 +45,7 @@ class PhotoController extends Controller
     {
         $request->validate([
             'title'=>'required|max:100',
-            'img'=>'required',
+            'img'=>'required|mimes:doc,pdf,docx,zip,jpeg,png,jpg,gif,svg',
         ]);
 
         $photo = new Photo();
@@ -54,7 +55,7 @@ class PhotoController extends Controller
         $file = $request->file('img');
         $extension = $file->getClientOriginalExtension();
         $filename = time().'.'.$extension;
-        $file->move('img/', $filename);
+        $file->storeAs('public/imgs', $filename);
 
         $photo->img = $filename;
 
@@ -105,18 +106,25 @@ class PhotoController extends Controller
     {
         $request->validate([
             'title'=>'required|max:100',
-            'img'=>'required',
         ]);
+
+        
+        if($request->hasFile('img')) {
+
+            $request->validate([
+            'img'=>'mimes:doc,pdf,docx,zip,jpeg,png,jpg,gif,svg',
+            ]);
+
+            $file = $request->file('img');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->storeAs('public/imgs', $filename);
+
+            $photo->img = $filename;
+        }
 
         $photo->title = $request->input('title');
         
-        $file = $request->file('img');
-        $extension = $file->getClientOriginalExtension();
-        $filename = time().'.'.$extension;
-        $file->move('img/', $filename);
-
-        $photo->img = $filename;
-
         $photo->save();
 
         return redirect()->route('photos.index')->with('success', 'Photo added successfully');
@@ -135,4 +143,9 @@ class PhotoController extends Controller
 
         return redirect()->route('photos.index')->with('success', 'Photo removed successfully');
     }
+
+    // private function deleteImgFromFolder(string $path) {
+    //     $file = public_path('img/' . $path);
+    //     $file->delete();
+    // }
 }
