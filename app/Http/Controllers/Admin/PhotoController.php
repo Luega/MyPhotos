@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PhotoController extends Controller
 {
@@ -106,6 +107,11 @@ class PhotoController extends Controller
      */
     public function update(Request $request, Photo $photo)
     {
+
+        if (Auth::user()->id != $photo->user_id) {
+            abort('403');
+        }
+
         $request->validate([
             'title'=>'required|max:100',
         ]);
@@ -144,6 +150,10 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
+
+        if (Auth::user()->id != $photo->user_id) {
+            abort('403');
+        }
 
         Storage::disk('public')->delete('imgs/' . $photo->img);
 

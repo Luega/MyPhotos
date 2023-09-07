@@ -13,4 +13,9 @@ class Photo extends Model
         'title',
         'img'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
