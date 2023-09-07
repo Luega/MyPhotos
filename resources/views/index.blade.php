@@ -39,21 +39,22 @@
 	<body>
 
 		<header>
-
-			<div>MyPhotos</div>
 			<div>
-				<a href="{{route('photos.index')}}">ADMIN</a>
+				<a href="{{url('/')}}">&#128248; OurPhoto</a>
 			</div>
-
+			<div>
+				<a href="{{route('photos.index')}}">&#127968; MyPage</a>
+			</div>
 		</header>
 
-		<main>
-
+		<main class="main-size-home">
 			<div class="container_imgs">
 			</div>
-
 		</main>
 
+		<footer>
+			<div>&#127758; OurPhoto &#128525;</div>
+		</footer>
 
 	</body>
 </html>

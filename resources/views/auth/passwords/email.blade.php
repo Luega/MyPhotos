@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-my-color-light">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
