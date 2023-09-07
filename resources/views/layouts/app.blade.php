@@ -54,10 +54,10 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('photos.create')}}" role='button'>NEW PHOTO</a>
+                                <a class="nav-link" style="font-weight: bold" href="{{route('photos.create')}}" role='button'>NEW</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('photos.index')}}" role='button'>ALL PHOTOS</a>
+                                <a class="nav-link" style="font-weight: bold" href="{{route('photos.index')}}" role='button'>ALL</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

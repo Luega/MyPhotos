@@ -26,7 +26,7 @@
 							const imgSrc = "imgs/" + data[i].img;
 							const imgUrl = '{{ Storage::url("") }}' + imgSrc;
 							console.log(imgUrl);
-            				const imgElement = '<div class="container_img pointer"><img src="' + imgUrl + '" alt="" srcset=""></div>';
+            				const imgElement = '<div class="container_img pointer"><p class="title_img">' + data[i].title + '</p><img src="' + imgUrl + '" alt="" srcset=""></div>';
                     		$('.container_imgs').append(imgElement);
 						}                            
 
@@ -53,7 +53,7 @@
 		</main>
 
 		<footer>
-			<div>&#127758; OurPhoto &#128525;</div>
+			<div><a href="{{url('/')}}">&#127758; OurPhoto &#128525;</a></div>
 		</footer>
 
 	</body>

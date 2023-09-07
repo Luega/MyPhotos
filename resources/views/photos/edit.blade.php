@@ -30,7 +30,7 @@
         <div class="form-group mt-2">
             <label for="title">Preview</label>
             <br>
-            <img class="photo-preview border border-grey" src="{{Storage::url('imgs/'.$photo->img)}}" alt="" srcset="" style="width:100px;height:100px;object-fit:contain;">
+            <img class="photo-preview border border-grey bg-white p-1" src="{{Storage::url('imgs/'.$photo->img)}}" alt="" srcset="" style="width:100px;height:100px;object-fit:contain;">
         </div> 
 
         <button type="submit" class="btn btn-success mt-4">SUBMIT</button>
