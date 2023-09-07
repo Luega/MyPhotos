@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class PhotoController extends Controller
 {
@@ -15,9 +14,9 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $photos = Photo::all();
+        $photos = Photo::where('user_id', $request->user()->id)->get();
 
         $data = [
             "photos" => $photos
@@ -59,6 +58,8 @@ class PhotoController extends Controller
         $file->storeAs('public/imgs', $filename);
 
         $photo->img = $filename;
+
+        $photo->user_id = $request->user()->id;
 
         $photo->save();
 
@@ -127,6 +128,8 @@ class PhotoController extends Controller
         }
 
         $photo->title = $request->input('title');
+
+        $photo->user_id = $request->user()->id;
         
         $photo->save();
 
